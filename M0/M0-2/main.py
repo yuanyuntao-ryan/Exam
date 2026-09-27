@@ -63,10 +63,9 @@ def main():
             xs, ys = load_data(csv_path, col_x, col_y)
             n, mean_x, mean_y, r = calculate_correlation(xs, ys)
             
+            
             # 3. 打印结果
-            # 3. 打印结果
-            print(f"r = {r}") # 这个必须永远打印，考官的脚本要抓取它
-        
+            print(f"r = {r}")        
         # 只有 verbose 为 true 才打印中间量
             if cfg.get("task", {}).get("verbose") is True:
                 print("n =", n)
