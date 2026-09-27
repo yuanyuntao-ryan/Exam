@@ -40,7 +40,10 @@ def calculate_correlation(xs, ys):
         dy = dy + b * b
         prod = prod + a * b
         
-    denom = dx * dy 
+    denom = math.sqrt(dx*dy)#修改错误的公式
+    if denom ==0:
+        raise ValueError("方差为0,无法计算相关系数")
+    #增加除零保护
     r = prod / denom
     return n, mean_x, mean_y, r
 
