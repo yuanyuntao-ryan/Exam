@@ -63,11 +63,15 @@ def main():
             xs, ys = load_data(csv_path, col_x, col_y)
             n, mean_x, mean_y, r = calculate_correlation(xs, ys)
             
-            # 3. 打印结果（暂时不管 verbose）
-            print("n =", n)
-            print("mean_x =", mean_x)
-            print("mean_y =", mean_y)
-            print("r =", r)
+            # 3. 打印结果
+            # 3. 打印结果
+            print(f"r = {r}") # 这个必须永远打印，考官的脚本要抓取它
+        
+        # 只有 verbose 为 true 才打印中间量
+            if cfg.get("task", {}).get("verbose") is True:
+                print("n =", n)
+                print("mean_x =", mean_x)
+                print("mean_y =", mean_y)
     except FileNotFoundError:
             print("错误：配置文件或数据文件不存在，请检查路径。")
             sys.exit(1)
