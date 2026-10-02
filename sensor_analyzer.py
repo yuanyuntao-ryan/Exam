@@ -31,14 +31,15 @@ cleaned = []
 print("=== 传感器数据分析 ===")
 
 # --- 读取数据 ---
-reader = csv.DictReader(open(INPUT_FILE, "r"))
+with open(INPUT_FILE,"r",encoding="utf-8")as f:#错误7修正
+    reader=csv.DictReader(f)
 
 
-for row in reader:
-    t = float(row["time"])
-    v = float(row["value"])#错误1修正
-    times.append(t)
-    data.append(v)
+    for row in reader:
+        t = float(row["time"])
+        v = float(row["value"])#错误1修正
+        times.append(t)
+        data.append(v)
 
 print("共读取 %d 条数据" % len(data))
 
@@ -62,11 +63,11 @@ for t,v in zip(times,data):
 # --- 输出清洗后的数据 ---
 os.makedirs(OUTPUT_DIR,exist_ok=True)
 output_path = os.path.join(OUTPUT_DIR, OUTPUT_FILE)#错误2修正
-f = open(output_path, "w")
-writer = csv.writer(f)
-writer.writerow(["time", "value"])
-for t,v in cleaned:
-    writer.writerow([t,v])#错误6修正
+with open(output_path, "w",newline="",encoding="utf-8")as f:#错误7修正
+    writer = csv.writer(f)
+    writer.writerow(["time", "value"])
+    for t,v in cleaned:
+        writer.writerow([t,v])#错误6修正
 
 print("均值 mean = %.4f" % mean)
 print("标准差 std = %.4f" % std)
