@@ -33,6 +33,7 @@ print("=== 传感器数据分析 ===")
 # --- 读取数据 ---
 reader = csv.DictReader(open(INPUT_FILE, "r"))
 
+
 for row in reader:
     t = float(row["time"])
     v = float(row["value"])#错误1
@@ -54,9 +55,9 @@ for v in data:
 std =math.sqrt( acc / len(data))
 
 # --- 剔除离群值 ---
-for v in data:
+for t,v in zip(times,data):
     if abs(v-mean)<=2*std:#错误4
-        data.remove(v)
+        cleaned.append((t,v))#错误5
 
 # --- 输出清洗后的数据 ---
 os.makedirs(OUTPUT_DIR,exist_ok=True)
