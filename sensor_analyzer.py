@@ -34,7 +34,7 @@ reader = csv.DictReader(open(INPUT_FILE, "r"))
 
 for row in reader:
     t = float(row["time"])
-    v = float(row["Value"])
+    v = float(row["value"])#错误1
     times.append(t)
     data.append(v)
 
@@ -58,7 +58,7 @@ for v in data:
         data.remove(v)
 
 # --- 输出清洗后的数据 ---
-output_path = os.path.join("/", OUTPUT_DIR, OUTPUT_FILE)
+output_path = os.path.join("/",OUTPUT_DIR, OUTPUT_FILE)
 f = open(output_path, "w")
 writer = csv.writer(f)
 writer.writerow(["time", "value"])
