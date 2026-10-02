@@ -36,7 +36,7 @@ reader = csv.DictReader(open(INPUT_FILE, "r"))
 
 for row in reader:
     t = float(row["time"])
-    v = float(row["value"])#错误1
+    v = float(row["value"])#错误1修正
     times.append(t)
     data.append(v)
 
@@ -51,22 +51,22 @@ mean = total / len(data)
 # --- 计算标准差 ---
 acc = 0
 for v in data:
-    acc += (v - mean)**2#错误3
+    acc += (v - mean)**2#错误3修正
 std =math.sqrt( acc / len(data))
 
 # --- 剔除离群值 ---
 for t,v in zip(times,data):
-    if abs(v-mean)<=2*std:#错误4
-        cleaned.append((t,v))#错误5
+    if abs(v-mean)<=2*std:#错误4修正
+        cleaned.append((t,v))#错误5修正
 
 # --- 输出清洗后的数据 ---
 os.makedirs(OUTPUT_DIR,exist_ok=True)
-output_path = os.path.join(OUTPUT_DIR, OUTPUT_FILE)#错误2
+output_path = os.path.join(OUTPUT_DIR, OUTPUT_FILE)#错误2修正
 f = open(output_path, "w")
 writer = csv.writer(f)
 writer.writerow(["time", "value"])
-for v in cleaned:
-    writer.writerow([v])
+for t,v in cleaned:
+    writer.writerow([t,v])#错误6修正
 
 print("均值 mean = %.4f" % mean)
 print("标准差 std = %.4f" % std)
