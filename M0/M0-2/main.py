@@ -55,34 +55,34 @@ def main():
 
     try:
         # 2. 调用函数执行流程
-            cfg = load_config(args.config)
-            csv_path = cfg["input_csv"]
-            col_x = cfg["columns"]["x"]
-            col_y = cfg["columns"]["y"]
+        cfg = load_config(args.config)
+        csv_path = cfg["input_csv"]
+        col_x = cfg["columns"]["x"]
+        col_y = cfg["columns"]["y"]
             
-            xs, ys = load_data(csv_path, col_x, col_y)
-            n, mean_x, mean_y, r = calculate_correlation(xs, ys)
+        xs, ys = load_data(csv_path, col_x, col_y)
+        n, mean_x, mean_y, r = calculate_correlation(xs, ys)
             
             
             # 3. 打印结果
-            print(f"r = {r}")        
+        print(f"r = {r}")        
         # 只有 verbose 为 true 才打印中间量
-            if cfg.get("task", {}).get("verbose") is True:
-                print("n =", n)
-                print("mean_x =", mean_x)
-                print("mean_y =", mean_y)
+        if cfg.get("task", {}).get("verbose") is True:
+            print("n =", n)
+            print("mean_x =", mean_x)
+            print("mean_y =", mean_y)
     except FileNotFoundError:
-            print("错误：配置文件或数据文件不存在，请检查路径。")
-            sys.exit(1)
+        print("错误：配置文件或数据文件不存在，请检查路径。",file=sys.stderr)
+        sys.exit(1)
     except KeyError as e:
-            print(f"错误：配置或数据中缺少必需的列名，具体缺失: {e}")
-            sys.exit(1)
+        print(f"错误：配置或数据中缺少必需的列名，具体缺失: {e}",file=sys.stderr)
+        sys.exit(1)
     except ValueError as e:
-            print(f"错误：数据格式错误（如空文件或零方差），具体原因: {e}")
-            sys.exit(1)
+        print(f"错误：数据格式错误（如空文件或零方差），具体原因: {e}",file=sys.stderr)
+        sys.exit(1)
     except Exception as e:
-            print(f"错误：发生了未预料的异常：{e}")
-            sys.exit(1)
+        print(f"错误：发生了未预料的异常：{e}",file=sys.stderr)
+        sys.exit(1)
  
 if __name__ == '__main__':
     main()
