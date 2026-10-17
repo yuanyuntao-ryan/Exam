@@ -18,7 +18,6 @@ tasks:
   - name: Navigate
     duration: 2.5
     success_rate: 0.8
-    
     dependencies: ["Init"]
 
   - name: DetectQR
