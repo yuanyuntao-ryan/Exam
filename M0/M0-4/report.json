@@ -1,62 +1,62 @@
 {
-  "timeout": false,
-  "total_duration": 11.0,
+  "timeout": true,
+  "total_duration": 2.14,
   "tasks": [
+    {
+      "name": "Check2",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "duration": 0.44,
+      "started_at": 1792312971.0202038,
+      "ended_at": 1792312971.4604213
+    },
     {
       "name": "Init",
       "status": "SUCCESS",
       "attempts": 1,
-      "duration": 0.52,
-      "started_at": 1792209197.551592,
-      "ended_at": 1792209198.0727944
+      "duration": 0.46,
+      "started_at": 1792312971.4604309,
+      "ended_at": 1792312971.9209769
     },
     {
       "name": "Navigate",
       "status": "SUCCESS",
       "attempts": 1,
-      "duration": 2.5,
-      "started_at": 1792209198.0728045,
-      "ended_at": 1792209200.5755906
+      "duration": 0.33,
+      "started_at": 1792312971.9209905,
+      "ended_at": 1792312972.2516088
     },
     {
-      "name": "DetectQR",
+      "name": "Scan",
       "status": "SUCCESS",
       "attempts": 1,
-      "duration": 1.5,
-      "started_at": 1792209200.5756106,
-      "ended_at": 1792209202.0775306
-    },
-    {
-      "name": "AvoidObstacle",
-      "status": "SUCCESS",
-      "attempts": 1,
-      "duration": 2.01,
-      "started_at": 1792209202.0775435,
-      "ended_at": 1792209204.082695
+      "duration": 0.31,
+      "started_at": 1792312972.25164,
+      "ended_at": 1792312972.5619454
     },
     {
       "name": "Grasp",
-      "status": "SUCCESS",
+      "status": "TIMEOUT",
       "attempts": 1,
-      "duration": 1.0,
-      "started_at": 1792209204.0827122,
-      "ended_at": 1792209205.0844123
+      "duration": 0.6,
+      "started_at": 1792312972.5619564,
+      "ended_at": 1792312973.1624966
+    },
+    {
+      "name": "Lift",
+      "status": "TIMEOUT",
+      "attempts": 0,
+      "duration": 0.0,
+      "started_at": null,
+      "ended_at": null
     },
     {
       "name": "Place",
-      "status": "SUCCESS",
-      "attempts": 1,
-      "duration": 1.02,
-      "started_at": 1792209205.0844276,
-      "ended_at": 1792209206.1040375
-    },
-    {
-      "name": "ReturnHome",
-      "status": "SUCCESS",
-      "attempts": 1,
-      "duration": 2.54,
-      "started_at": 1792209206.1040514,
-      "ended_at": 1792209208.6410556
+      "status": "TIMEOUT",
+      "attempts": 0,
+      "duration": 0.0,
+      "started_at": null,
+      "ended_at": null
     }
   ]
 }
